@@ -8,9 +8,10 @@ int main()
 
 	DayOne day1;
 
+	std::cout << day1.output() << std::endl;
+
 	if (std::cin.get())
 	{
 		return 0;
-
 	}
 }
