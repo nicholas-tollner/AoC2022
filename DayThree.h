@@ -11,7 +11,7 @@ public:
 	DayThree();
 	void input();
 	int output();
-	int process(std::string comp1, std::string comp2, std::set<int> &chars);
+	int process(std::string r1, std::string r2, std::string r3, std::set<int> &chars1, std::set<int> &chars2);
 
 private:
 	std::ifstream is;

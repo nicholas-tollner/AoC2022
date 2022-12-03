@@ -14,9 +14,9 @@ int main()
 	// std::cout << dayOne.output() << std::endl;
 	// dayTwo.output();
 	int result = dayThree.output();
-	std::cout << "Total Sum: " << result << std::endl;
+	std::cout << "\nTotal Sum: " << result << std::endl;
 
-	std::cout << "Program done! .. " << std::endl;
+	std::cout << "\nProgram done!" << std::endl;
 
 	if (std::cin.get())
 	{

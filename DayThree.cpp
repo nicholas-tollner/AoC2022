@@ -17,30 +17,30 @@ void DayThree::input()
 int DayThree::output()
 {
 	int totalSum = 0;
-	for (std::string line : lines)
+	int count = 1;
+	auto it = lines.begin();
+	while (it != lines.end())
 	{
-		std::set<int> chars;
-		size_t mid = (line.size()) / 2;
-		std::string compOne = line.substr(0, mid);
-		std::string compTwo = line.substr(mid, std::string::npos);
+		std::cout << "\n --- Group: " << count << " --- " << std::endl;
+		std::set<int> chars1;
+		std::set<int> chars2;
 
-		std::cout << "--- Processing ---" << std::endl;
-		int result = process(compOne, compTwo, chars);
+		int result = process(*it, *(it+1), *(it+2), chars1, chars2);
 		std::cout << ", priority: " << result << std::endl;
 		totalSum += result;
+
+		count++;
+		it += 3;
 	}
 	return totalSum;
 }
 
-int DayThree::process(std::string comp1, std::string comp2, std::set<int>& chars)
+int DayThree::process(std::string r1, std::string r2, std::string r3, std::set<int>& chars1, std::set<int> &chars2)
 {
-	size_t setSize;
 	int tmp;
 
-	//std::cout << " --- Compartment One ---" << std::endl;
-	for (auto c : comp1)
+	for (auto c : r1)
 	{
-		setSize = chars.size();
 		//std::cout << "Char: " << c << std::endl;
 		if (std::isupper(c))
 		{
@@ -50,13 +50,11 @@ int DayThree::process(std::string comp1, std::string comp2, std::set<int>& chars
 		{
 			tmp = (c - lowerDiff);
 		}
-		chars.insert(tmp);
+		chars1.insert(tmp);
 	}
 	
-	//std::cout << " --- Compartment Two ---" << std::endl;
-	for (auto c : comp2)
+	for (auto c : r2)
 	{
-		setSize = chars.size();
 		//std::cout << "Char: " << c << std::endl;
 		
 		if (std::isupper(c))
@@ -70,9 +68,34 @@ int DayThree::process(std::string comp1, std::string comp2, std::set<int>& chars
 
 		//std::cout << "Searching ... " << std::endl;
 		
-		auto it = chars.begin();
+		auto it = chars1.begin();
 
-		while (it != chars.end())
+		while (it != chars1.end())
+		{
+			if (tmp == *it)
+			{
+				chars2.insert(tmp);
+			}
+			it++;
+		}
+	}
+	
+	for (auto c : r3)
+	{
+		//std::cout << "Char: " << c << std::endl;
+		
+		if (std::isupper(c))
+		{
+			tmp = (c - upperDiff);
+		}
+		else
+		{
+			tmp = (c - lowerDiff);
+		}
+
+		auto it = chars2.begin();
+
+		while (it != chars2.end())
 		{
 			if (tmp == *it)
 			{
