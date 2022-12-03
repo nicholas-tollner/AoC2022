@@ -6,9 +6,13 @@ int main()
 {
 	std::cout << "Starting Application .. " << std::endl;
 
-	DayOne day1;
+	DayOne dayOne;
+	DayTwo dayTwo;
 
-	std::cout << day1.output() << std::endl;
+	// std::cout << dayOne.output() << std::endl;
+	dayTwo.output();
+
+	std::cout << "Program done! .. " << std::endl;
 
 	if (std::cin.get())
 	{
