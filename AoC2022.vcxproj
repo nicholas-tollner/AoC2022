@@ -98,6 +98,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DayFour.cpp" />
     <ClCompile Include="DayOne.cpp" />
     <ClCompile Include="DayThree.cpp" />
     <ClCompile Include="DayTwo.cpp" />
@@ -105,10 +106,12 @@
     <ClCompile Include="DayOne.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DayFour.h" />
     <ClInclude Include="DayThree.h" />
     <ClInclude Include="DayTwo.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="DayFour.txt" />
     <Text Include="DayOne.txt" />
     <Text Include="DayThree.txt" />
     <Text Include="DayTwo.txt" />
