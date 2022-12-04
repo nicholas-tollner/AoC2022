@@ -76,16 +76,26 @@ int DayFour::process()
 
 bool DayFour::compare(int a, int b, int c, int d)
 {
-	//range is fully contained if a >= c && b <=d || c >= a && d <= b
-	if (a >= c && b <= d)
+	if (c >= a && c <= b)
 	{
-		std::cout << "[" << a << ", " << b << "] is fully contained within [" << c << ", " << d << "]" << std::endl;
-		return true;
-	} 
-	else if (c >= a && d <= b)
-	{
-		std::cout << "[" << c << ", " << d << "] is fully contained within [" << a << ", " << b << "]" << std::endl;
+		std::cout << "[" << c << ", " << d << "] is partially contained within [" << a << ", " << b << "]" << std::endl;
 		return true;
 	}
+	else if (d <= b && d >= a)
+	{
+		std::cout << "[" << c << ", " << d << "] is partially contained within [" << a << ", " << b << "]" << std::endl;
+		return true;
+	}
+	else if (a >= c && a <= d)
+	{
+		std::cout << "[" << a << ", " << b << "] is partially contained within [" << c << ", " << d << "]" << std::endl;
+		return true;
+	}
+	else if (b <= d && b >= c)
+	{
+		std::cout << "[" << a << ", " << b << "] is partially contained within [" << c << ", " << d << "]" << std::endl;
+		return true;
+	}
+
 	return false;
 }
