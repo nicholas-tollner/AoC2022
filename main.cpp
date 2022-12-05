@@ -3,19 +3,14 @@
 #include "DayTwo.h"
 #include "DayThree.h"
 #include "DayFour.h"
+#include "DayFive.h"
+
 
 int main()
 {
 	std::cout << "Starting Application .. \n" << std::endl;
-
-	//DayOne dayOne;
-	//DayTwo dayTwo;
-	//DayThree dayThree;
-	DayFour dayFour;
-
-	//std::cout << "\nTotal Sum: " << result << std::endl;
-
-	std::cout << dayFour.output() << std::endl;
+	DayFive dayFive;
+	std::cout << dayFive.output() << std::endl;
 
 	std::cout << "\nProgram done!" << std::endl;
 
