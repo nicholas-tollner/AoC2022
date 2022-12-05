@@ -55,39 +55,41 @@ std::string DayFive::output()
 		{
 			position[3].push_back(s[9]);
 		}
+		if (crates.size() > 4)
+		{
+			if (s[13] != ' ')
+			{
+				position[4].push_back(s[13]);
+			}
 
-		if (s[13] != ' ')
-		{
-			position[4].push_back(s[13]);
-		}
-		
-		if (s[17] != ' ')
-		{
-			position[5].push_back(s[17]);
-		}
-		
-		if (s[21] != ' ')
-		{
-			position[6].push_back(s[21]);
-		}
-		
-		if (s[25] != ' ')
-		{
-			position[7].push_back(s[25]);
-		}
-		
-		if (s[29] != ' ')
-		{
-			position[8].push_back(s[29]);
-		}
-		
-		if (s[33] != ' ')
-		{
-			position[9].push_back(s[33]);
+			if (s[17] != ' ')
+			{
+				position[5].push_back(s[17]);
+			}
+
+			if (s[21] != ' ')
+			{
+				position[6].push_back(s[21]);
+			}
+
+			if (s[25] != ' ')
+			{
+				position[7].push_back(s[25]);
+			}
+
+			if (s[29] != ' ')
+			{
+				position[8].push_back(s[29]);
+			}
+
+			if (s[33] != ' ')
+			{
+				position[9].push_back(s[33]);
+			}
 		}
 	}
 
-	/*std::cout << " --- Stack Positions --- " << std::endl;
+	std::cout << " --- Stack Positions --- " << std::endl;
 	int col = 0;
 	for (auto s : position)
 	{
@@ -100,7 +102,7 @@ std::string DayFive::output()
 
 		std::cout << "\n" << std::endl;
 		col++;
-	}*/
+	}
 
 
 	std::cout << "--- Lines --- " << std::endl;
@@ -127,27 +129,26 @@ std::string DayFive::output()
 // Performs operation on the positions deque
 void DayFive::process(int pos, int target, int num)
 {
-	std::cout << "Moving: " << num << " from " << pos << " to " << target;
+	std::stack<int> nums;
+	std::cout << "Moving: " << num << " from " << pos << " to " << target << std::endl;
 	for (int i = 0; i < num; i++)
 	{
-		int crate = position[pos].front();			// Move crate from here
-		position[target].push_front(crate);			// To here
-		position[pos].pop_front();					// Remove crate from old position
-
-		/*std::cout << " --- Current Positions --- " << std::endl;
-		int col = 0;
-		for (auto s : position)
+		if (num == 1)
 		{
-			std::cout << col << ": ";
-			while (!s.empty())
-			{
-				std::cout << s.front() << ", ";
-				s.pop_front();
-			}
-
-			std::cout << "\n" << std::endl;
-			col++;
-		}*/
+			int crate = position[pos].front();			// Move crate from here
+			position[target].push_front(crate);			// To here
+			position[pos].pop_front();					// Remove crate from old position
+		}
+		else
+		{
+			nums.push(position[pos].front());
+			position[pos].pop_front();					// Remove crate from old position
+		}
 	}
-	std::cout << " done!" << std::endl;
+	while (!nums.empty())
+	{
+		position[target].push_front(nums.top());			// To here
+		nums.pop();
+	}
 }
+	
